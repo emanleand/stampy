@@ -3,16 +3,18 @@
 include_once __DIR__ . '/UserController.php';
 include_once __DIR__ . '../../../Model/User/UserModel.php';
 
-class RegisterUser extends UserController 
+class LoginController extends UserController 
 {
     function __construct()
     {                
         session_start();
         try {
             $user = $this->validate();
-            $this->registerUser($user);
+            if (empty($this->getUser($user))) {
+                // return json 403
+            }
 
-            //return json status code 202
+            return $this->getUser($user);            
         } catch (\Throwable $e) {
             var_dump($e);die();
             // return json status code 400
@@ -20,12 +22,12 @@ class RegisterUser extends UserController
     }
 
     /**
-     * registerUser
+     * getUser
      * @param user
      */
-    private function registerUser($user) {//var_dump('doo min');die();
+    private function getUser($user) {
         $db = new UserModel;
-        $db->setUser($user);
+        return $db->findUser($user);
     }
 
     /**
@@ -33,7 +35,7 @@ class RegisterUser extends UserController
      */
     private function validate() {
 
-        $field = UserController::REGISTER_USER;
+        $field = UserController::LOGIN_USER;
         $data = [];
 
         foreach ($field as $key => $value) {
@@ -44,12 +46,8 @@ class RegisterUser extends UserController
             }
         }
 
-        if ($data['password'] !== $data['password_repeat']) {
-            throw new Exception('los password son distintos', 400);
-        }
-
         return $data;
     }
 }
 
-new RegisterUser;
+new LoginController;

@@ -1,16 +1,12 @@
 <?php
 
-include_once __DIR__ . '../AppModel.php';
+include_once __DIR__ . '../../AppModel.php';
 
 /**
  * @Class UserModel
  */
 class UserModel extends AppModel
-{   
-    /**
-     * setUser
-     * @param $user
-     */
+{
     public function setUser($user)
     {
         $query = "INSERT INTO user
@@ -26,13 +22,40 @@ class UserModel extends AppModel
                 '{$user['last_name']}',
                 '{$user['username']}',
                 '{$user['email']}',
-                '{$user['password']}')"
+                '{$user['password']}')
+                "
             ;
-            
+
         if ($this->getConection()) {
-            return $this->conexion->query($query);
+            return $this->executeQuery($query);
         }
         return false;
+    }
+
+    public function findUser($user = []) 
+    {
+        $query = 
+            "SELECT * 
+                FROM user
+                WHERE username = '{$user['username']}' AND 
+                password = '{$user['password']}'
+            "
+        ;
+
+        if ($this->getConection()) {
+            return $this->getData($query);
+        }
+    }
+
+    public function findAll() 
+    {
+        $query = 
+            "SELECT * FROM userlogin"
+        ;
+
+        if ($this->getConection()) {
+            return $this->getData($query);
+        }
     }
 }
 

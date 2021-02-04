@@ -12,3 +12,9 @@
 
 <!-- Register User -->
 <?php require_once('Html/register_user.php'); ?>
+
+<!-- Login User -->
+<?php require_once('Html/login_user.php'); ?>
+
+<!-- List User -->
+<?php require_once('Html/list_user.php'); ?>

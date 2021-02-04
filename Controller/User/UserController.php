@@ -6,13 +6,19 @@ include_once __DIR__ . '../AppController.php';
 class UserController
 {   
     /** @var array */
-    const FIELD_USER = [
+    const REGISTER_USER = [
         'first_name', 
         'last_name', 
         'username', 
         'email', 
         'password', 
         'password_repeat'
+    ];
+
+    /** @var array */
+    const LOGIN_USER = [ 
+        'username',
+        'password'
     ];
 }
 
