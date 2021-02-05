@@ -1,0 +1,174 @@
+/* ----- ----- HEADER ----- ----- */
+body {
+    background: #fff;
+    font-family: "Open Sans";
+    font-size: 16px; 
+}
+  
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+    overflow: hidden; 
+}
+
+header {
+    background: #2e353a;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+header .menu {
+    margin: 40px 0;
+    text-align: right; 
+}
+
+header .menu a {
+    margin: 0 20px;
+    color: #fff;
+    padding-bottom: 9px;
+    font-size: 1em;
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 2px solid transparent; 
+}
+
+header .menu a:hover {
+    border-bottom: 2px solid #fff; 
+}
+
+/*Button*/
+.small {
+	font-size: 14px;
+	padding: 10px 15px;
+}
+
+section {
+    margin-top: 50px;
+    margin: 0 auto;
+}
+
+.form-login {
+    background: #fff;
+	width: 500px;
+	margin: 20px auto;
+	padding: 20px;
+	border-radius: 5px;
+}
+
+.title-login {
+    font-size: 20px;
+    line-height: 34px;
+    font-weight: 300;
+    color: #121f2b;
+    text-align: center; 
+}
+
+.btn {
+    display: inline-block;
+	font-size: 16px;
+	padding: 15px 20px;
+	text-decoration: none;
+	margin:0 10px ;
+}
+
+.info {
+    color: #fff;
+    background: #2f735e
+}
+
+.form-login .btn:hover {
+    background: #105f46; }
+
+/* FORM REGISTER */
+.form-register {
+    background: #fff;
+	width: 500px;
+	margin: 20px auto;
+	padding: 20px;
+	border-radius: 5px;
+}
+
+.form-login input,
+.form-register input {
+    display: block;
+    width: 100%;
+	padding: 20px;
+	margin-bottom: 20px;
+	border-radius: 3px;
+	border:1px solid #cecece;
+	font-size: 16px;
+	font-family: Arial;
+}
+
+.title-register {
+    font-size: 20px;
+    line-height: 34px;
+    font-weight: 300;
+    color: #121f2b;
+    text-align: center; 
+}
+
+.form-register .btn:hover {
+    background: #105f46; 
+} 
+
+/* LIST */
+.title-table-user {
+    font-size: 20px;
+    line-height: 34px;
+    font-weight: 300;
+    color: #121f2b;
+    text-align: center; 
+}
+
+.table-user {
+    border-collapse: collapse;
+    margin: 0 auto;
+    font-size: 0.9em;
+    font-family: "Open Sans";
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.table-user thead,
+.table-user tbody {
+    padding: 20px;
+}
+
+.table-user thead tr {
+    background-color: none;
+    color: #000;
+    text-align: left;
+    border-bottom:1px solid #cecece;
+    font-size: 16px; 
+}
+
+.table-user th,
+.table-user td {
+    padding: 20px 20px;
+}
+
+.table-user tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.table-user tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.table-user tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.table-user tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+
+/* ----- ----- MEDIA QUERIES ----- ----- */
+@media screen and (max-width: 800px) {
+    header .menu {
+      text-align: center; 
+    }
+}

@@ -1,29 +1,12 @@
-<h3>Formulario de Registro de Usuario</h3>
-<div class="container"></div>
-    <div class="form">
-        <form action="Controller/User/RegisterController.php" method="POST">
-                                    
-            <div class= "group">
-                <input type="text" name="first_name" class= "form-control" placeholder="First Name">
-            </div>
-            <div class= "group">
-                <input type="text" name="last_name" class= "form-control" placeholder="Last Name">
-            </div>
-            <div class= "group">
-                <input type="text" name="username" class= "form-control" placeholder="Username">
-            </div>
-            <div class= "group">
-                <input type="text" name="email" class= "form-control" placeholder="Email">
-            </div>                        
-            <div class= "group">
-                <input type="password" name="password" class= "form-control" placeholder="Password">
-            </div>                        
-            <div class= "group">
-                <input type="password" name="password_repeat" class= "form-control" placeholder="Password - Repeat">
-            </div>                        
-            <div class="group">
-                <input type="submit" class="btn btn-success btn-block" name="save_task" value="Register">
-            </div>
-        </form>                    
-    </div>        
-</div>
+<section id="section-form-register">
+    <h3 class="title-register">Register</h3>
+    <form class="form-register" action="Controller/User/RegisterController.php" method="POST">
+        <input type="text" name="first_name" placeholder="First Name">
+        <input type="text" name="last_name" placeholder="Last Name">
+        <input type="text" name="username" placeholder="Username">
+        <input type="text" name="email" placeholder="Email">
+        <input type="password" name="password" placeholder="Password">
+        <input type="password" name="password_repeat" placeholder="Password - Repeat">
+        <input type="submit" class="btn info" name="register" value="register">
+    </form>
+</section>

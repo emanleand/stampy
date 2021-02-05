@@ -1,16 +1,8 @@
-<h3>Login de Usuario</h3>
-<div class="container"></div>
-<div class="form">
-    <form action="Controller/User/LoginController.php" method="POST">
-        <div class="group">
-            <input type="text" name="username" class="form-control" placeholder="Username">
-        </div>
-        <div class="group">
-            <input type="password" name="password" class="form-control" placeholder="Password">
-        </div>
-        <div class="group">
-            <input type="submit" class="btn btn-success btn-block" name="save_task" value="Login">
-        </div>
+<section>
+    <h3 class="title-login">Login de Usuario</h3>
+    <form class="form-login" action="Controller/User/LoginController.php" method="POST">
+        <input type="text" name="username" placeholder="Username">
+        <input type="password" name="password" placeholder="Password">
+        <input type="submit" class="btn info" name="login" value="login">        
     </form>
-</div>
-</div>
+</section>
