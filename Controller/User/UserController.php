@@ -1,9 +1,8 @@
 <?php
 
-include_once __DIR__ . '../AppController.php';
+include_once __DIR__ . '../../AppController.php';
 
-// class UserController extends AppController
-class UserController
+class UserController extends AppController
 {   
     /** @var array */
     const REGISTER_USER = [
@@ -21,5 +20,3 @@ class UserController
         'password'
     ];
 }
-
-?>

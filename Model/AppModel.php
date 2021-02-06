@@ -37,7 +37,7 @@ class AppModel
 				}
 				$i++;
 			}
-			return $data;
+			return $data[0];
         }
         return [];
         
