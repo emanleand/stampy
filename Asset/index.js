@@ -1,42 +1,119 @@
-window.onload = () => {
-    document.querySelector('#section-form-register').style.display = "none";
-    document.querySelector('#section-table-user').style.display = "none";
+const URL = "/stampy/Controller/User/";
 
-    let login = document.querySelector('#login');
-    login.addEventListener('click', (e) => {
+window.onload = () => {
+    let viewRegister = document.querySelector('#section-form-register');
+    viewRegister.style.display = 'none';
+
+    let viewUserList = document.querySelector('#section-table-user');
+    viewUserList.style.display = 'none';
+
+    let viewLogin = document.querySelector('#section-form-login');
+
+    let linkNewRegister = document.querySelector('#new-register');
+    
+    let linkLogin = document.querySelector('#link-login');
+
+    /* *** Click *** */
+    linkNewRegister.addEventListener('click', (e) => {
+        focusViewRegister();
+    });
+
+    linkLogin.addEventListener('click', (e) => {
+        focusViewLogin();
+    });
+
+    let buttonLogin = document.querySelector('#login');
+    buttonLogin.addEventListener('click', (e) => {
         e.preventDefault();
         accessRequest();
     });
 
+    let buttonRegister = document.querySelector('#register');
+    buttonRegister.addEventListener('click', (e) => {
+        e.preventDefault();
+        userRequest();
+    });    
+
+    /* *** Event *** */
+    function focusViewLogin() {
+        viewLogin.style.display = 'block';
+        viewUserList.style.display = 'none';
+        viewRegister.style.display = 'none';
+    }
+
+    function focusViewRegister() {
+        viewRegister.style.display = 'block';
+        viewLogin.style.display = 'none';
+        viewUserList.style.display = 'none';
+    }
+    
+    function focusViewListUser() {
+        viewUserList.style.display = 'block';
+        viewRegister.style.display = 'none';
+        viewLogin.style.display = 'none';
+    }
     /**
      * 
      */
     function accessRequest() {
-        $errorLogin = document.querySelector('#error-login');
-        $errorLogin.innerHTML = '';
+        let errorLogin = document.querySelector('#error-login');
+        errorLogin.innerHTML = '';
 
         let formData = document.querySelector('#form-login');
         let data = new FormData(formData);
         let dataObj = serialize(data);
         let dataString = JSON.stringify(dataObj);
 
-        const URL = "/stampy/Controller/User/LoginController.php";
+        const urlLogin = URL + "LoginController.php";
         let method = 'POST';
 
         let http = new XMLHttpRequest();
-        http.open(method, URL, true);
+        http.open(method, urlLogin, true);
         http.setRequestHeader('Content-type', 'application/json; charset=utf-8');
         http.onload = function () {
             let response = JSON.parse(http.responseText);
             if (http.readyState == 4 && http.status == "200") {
                 console.log(response);
                 if (response.code === 200) {
-                    console.log('200');
+                    focusViewListUser();
                 } else {
-                    $errorLogin.innerHTML = response.message;
+                    errorLogin.innerHTML = response.message;
                 }
             } else {
-                $errorLogin.innerHTML = response.message;
+                errorLogin.innerHTML = response.message;
+            }
+        }
+        http.send(dataString);
+    }
+
+    /**
+     * 
+     */
+    function userRequest() {
+        let errorLogin = document.querySelector('#error-register');
+        errorLogin.innerHTML = '';
+
+        let formData = document.querySelector('#form-register');
+        let data = new FormData(formData);
+        let dataObj = serialize(data);
+        let dataString = JSON.stringify(dataObj);
+
+        let urlRegister = URL + "RegisterController.php";
+        let method = 'POST';
+
+        let http = new XMLHttpRequest();
+        http.open(method, urlRegister, true);
+        http.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+        http.onload = function () {
+            let response = JSON.parse(http.responseText);
+            if (http.readyState == 4 && http.status == "200") {
+                if (response.code === 200) {
+                    focusViewLogin();
+                } else {
+                    errorLogin.innerHTML = response.message;
+                }
+            } else {
+                errorLogin.innerHTML = response.message;
             }
         }
         http.send(dataString);
