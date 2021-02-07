@@ -23,8 +23,7 @@ class UserModel extends AppModel
                 '{$user['username']}',
                 '{$user['email']}',
                 '{$user['password']}')
-                "
-            ;
+                ";
 
         if ($this->getConection()) {
             return $this->executeQuery($query);
@@ -32,31 +31,59 @@ class UserModel extends AppModel
         return false;
     }
 
-    public function findUser($user = []) 
+    public function findUser($user = [])
     {
-        $query = 
+        $query =
             "SELECT * 
                 FROM user
                 WHERE username = '{$user['username']}' AND 
                 password = '{$user['password']}'
-            "
-        ;
+            ";
 
         if ($this->getConection()) {
             return $this->getData($query);
         }
     }
 
-    public function findAll() 
+    public function findAll()
     {
-        $query = 
-            "SELECT * FROM userlogin"
+        $query =
+            "SELECT * FROM user";
+
+        if ($this->getConection()) {
+            return $this->getData($query);
+        }
+    }
+
+    /**
+     * 
+     */
+    public function removeUser(int $id)
+    {
+        $query =
+            "DELETE FROM user
+            WHERE id = {$id}
+        ";
+
+        if ($this->getConection()) {
+            return $this->executeQuery($query);
+        }
+        return false;
+    }
+
+    /**
+     * @param int $id 
+     */
+    public function find(int $id = null)
+    {
+        $filter = ($id)? "WHERE id = {$id}": ""; 
+        $query =
+            "SELECT * FROM user " . $filter
         ;
 
         if ($this->getConection()) {
             return $this->getData($query);
         }
+        return false;
     }
 }
-
-?>

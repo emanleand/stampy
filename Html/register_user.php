@@ -9,6 +9,5 @@
         <input type="password" name="password" placeholder="Password">
         <input type="password" name="password_repeat" placeholder="Password - Repeat">
         <input type="submit" class="btn info" id="register" name="register" value="register">
-        <button class="btn info" id="register" name="register" value="register">Register</button>
     </form>
 </section>

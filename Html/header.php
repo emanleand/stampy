@@ -10,7 +10,7 @@
 	<header>
 		<div class="container">
 			<nav class="menu">
-				<a href="#">Stampy</a>
+				<a id="link-users" href="#">Stampy</a>
 				<a id="link-login" href="#">Login</a>
 				<a id="new-register" href="#">Register</a>
 				<a href="#">Logout</a>

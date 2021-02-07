@@ -20,5 +20,8 @@
     
     <!-- List User -->
     <?php require_once('Html/list_user.php'); ?>
+
+    <!-- Edit User -->
+    <?php require_once('Html/edit_user.php'); ?>
 </section>
 <?php require_once('Html/footer.php'); ?>

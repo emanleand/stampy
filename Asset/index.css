@@ -40,7 +40,7 @@ header .menu a:hover {
 /*Button*/
 .small {
 	font-size: 14px;
-	padding: 10px 15px;
+	padding: 5px 10px;
 }
 
 section {
@@ -65,18 +65,27 @@ section {
 }
 
 .btn {
-    display: inline-block;
-	font-size: 16px;
-	padding: 15px 20px;
+	padding: 7px 10px;
 	text-decoration: none;
-	margin:0 10px ;
+    margin:0 10px ;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 .info {
     color: #fff;
-    background: #2f735e
+    background: #55a6b1
 }
 
+.alert {
+    color: #fff;
+    background: #de6b47
+}
 .form-login .btn:hover {
     background: #105f46; }
 

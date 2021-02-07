@@ -36,8 +36,11 @@ class AppModel
 					$data[$i][$key] = $value;
 				}
 				$i++;
-			}
-			return $data[0];
+            }
+            if (count($data) === 1) {
+                return $data[0];
+            } 
+            return $data;
         }
         return [];
         
