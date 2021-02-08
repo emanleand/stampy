@@ -2,21 +2,30 @@
 
 include_once __DIR__ . '../../AppController.php';
 
+/**
+ * Class UserController
+ * 
+ * @Description This class is used to unify the processes common to user.
+ * 
+ */
 class UserController extends AppController
 {   
-    /** @var array */
-    const REGISTER_USER = [
-        'first_name', 
-        'last_name', 
-        'username', 
-        'email', 
-        'password', 
-        'password_repeat'
-    ];
+    /**
+     * This validates that all the data of an account was sent
+     * 
+     * @param Array $input
+     * @return Array | null
+     * 
+     */
+    protected function validate($input)
+    {
+        $error = [];
+        foreach ($input as $key => $value) {
+            if (!isset($value) || empty($value)) {
+                $error[$key] = $value;
+            }
+        }
 
-    /** @var array */
-    const LOGIN_USER = [ 
-        'username',
-        'password'
-    ];
+        return $error;
+    }
 }

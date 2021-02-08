@@ -4,25 +4,28 @@ include_once __DIR__ . '/UserController.php';
 include_once __DIR__ . '../../../Model/User/UserModel.php';
 
 /**
- * Class RegisterController 
+ * Class UpdateController 
  */
-class RegisterController extends UserController
+class UpdateController extends UserController
 {
     function __construct()
     {
-        session_start();
-        $this->registerUserAction();
+        $this->updateUserAction();
     }
 
     /**
-     * This registers a new account.
-     * 
+     * This updates the data of an account
      */
-    private function registerUserAction()
+    private function updateUserAction()
     {
         try {
             $input = json_decode(file_get_contents('php://input'), 1);
             $error = $this->validate($input);
+
+            if (!isset($_GET['id']) || empty($_GET['id'])) {
+                $this->createResponseFailer(400, 'BadRequest');
+            }
+            $id = $_GET['id'];
 
             if (!empty($error)) {
                 $this->createResponseFailer(400, 'BadRequest');
@@ -31,9 +34,9 @@ class RegisterController extends UserController
             if ($input['password'] !== $input['password_repeat']) {
                 $this->createResponseFailer(400, 'BadRequest');
             }
-
+            
             $db = new UserModel;
-            $db->setUser($input);
+            $db->updateUser($input, $id);
 
             $this->createResponseSuccess(['message' => 'success']);
         } catch (Exception $e) {
@@ -44,4 +47,4 @@ class RegisterController extends UserController
     }
 }
 
-new RegisterController;
+new UpdateController;

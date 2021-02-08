@@ -4,9 +4,18 @@ include_once __DIR__ . '../../AppModel.php';
 
 /**
  * @Class UserModel
+ * 
+ * @Description Here all the queries in the database related to the user controller are defined
+ * 
  */
 class UserModel extends AppModel
 {
+    /**
+     * Register a new user account
+     * 
+     * @param Array $user
+     * 
+     */
     public function setUser($user)
     {
         $query = "INSERT INTO user
@@ -45,10 +54,21 @@ class UserModel extends AppModel
         }
     }
 
-    public function findAll()
+    /**
+     * This retrieves all accounts except the current one in session.
+     * 
+     */
+    public function findWithoutUsingUserCurrent()
     {
+        if (!isset($_SESSION['id']) || empty($_SESSION['id'])) {
+            return [];
+        }
+
+        $id = $_SESSION['id'];
         $query =
-            "SELECT * FROM user";
+            "SELECT * FROM user
+            WHERE id <> '{$id}'
+        ";
 
         if ($this->getConection()) {
             return $this->getData($query);
@@ -56,6 +76,9 @@ class UserModel extends AppModel
     }
 
     /**
+     * Here a specific user account is deleted
+     * 
+     * @param int $id
      * 
      */
     public function removeUser(int $id)
@@ -72,7 +95,10 @@ class UserModel extends AppModel
     }
 
     /**
-     * @param int $id 
+     * 
+     * This searches for a specific user account.
+     * 
+     * @param int $id
      */
     public function find(int $id = null)
     {
@@ -83,6 +109,32 @@ class UserModel extends AppModel
 
         if ($this->getConection()) {
             return $this->getData($query);
+        }
+        return false;
+    }
+
+    /**
+     * 
+     * Here a specific user account is updated
+     * 
+     * @param Array $user 
+     * @param int $id
+     * 
+     */
+    public function updateUser(array $user, int $id)
+    {
+        $query =
+            "UPDATE user SET 
+                first_name = '{$user['first_name']}', 
+                last_name = '{$user['last_name']}', 
+                username = '{$user['username']}', 
+                email = '{$user['email']}', 
+                password = '{$user['password']}'
+            WHERE id = {$id}
+        ";
+
+        if ($this->getConection()) {
+            return $this->executeQuery($query);
         }
         return false;
     }

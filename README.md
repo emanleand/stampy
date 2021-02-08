@@ -10,7 +10,7 @@ USE stampy;
 
 ### Create Table user
 
-```java 
+```java
 CREATE TABLE user(
 	id int(255) auto_increment not null,
 	first_name varchar(50) not null,
@@ -21,4 +21,13 @@ CREATE TABLE user(
 	create_at datetime DEFAULT CURRENT_TIMESTAMP,	
 CONSTRAINT pk_task PRIMARY KEY(id)
 )ENGINE =innoDb;
+```
+### Create Index user
+```java
+CREATE UNIQUE INDEX idx_username
+ON user (username);
+```
+```java
+CREATE UNIQUE INDEX idx_email
+ON user (email);
 ```

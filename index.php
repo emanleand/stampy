@@ -8,20 +8,19 @@
 */
 
 ?>
-<!-- <link type='text/css' rel="stylesheet" href="/appweb/leo/sec/gestion_pig/assets/css/main.css"> -->
 
-<?php require_once('Html/header.php'); ?>
+<?php require_once('Html/header.php'); 
+    session_start();
+?>
+
 <section class="main">		
     <!-- Register User -->
-    <?php require_once('Html/register_user.php'); ?>
+    <?php require_once('Html/User/register_user.php'); ?>
     
     <!-- Login User -->
-    <?php require_once('Html/login_user.php'); ?>
+    <?php require_once('Html/User/login_user.php'); ?>
     
     <!-- List User -->
-    <?php require_once('Html/list_user.php'); ?>
-
-    <!-- Edit User -->
-    <?php require_once('Html/edit_user.php'); ?>
+    <?php require_once('Html/User/list_user.php'); ?>
 </section>
 <?php require_once('Html/footer.php'); ?>

@@ -7,12 +7,13 @@ class ListController extends UserController
 {
     function __construct()
     {
+        
     }
 
     public function getUsers()
     {
         $db = new UserModel;
-        return $db->findAll();
+        return $db->findWithoutUsingUserCurrent();
     }
 }
 

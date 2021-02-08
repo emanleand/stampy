@@ -1,4 +1,11 @@
 <?php
+
+/**
+ * Class AppModel
+ * 
+ * @Description Here the useful processes to all the tables are defined.
+ * 
+ */
 class AppModel
 {
     /**
@@ -7,6 +14,10 @@ class AppModel
      */
     protected $conection;
 
+    /**
+     * This recovers the connection to the database
+     * 
+     */
 	protected function getConection() {
         $this->conection = new mysqli(
             'localhost',
@@ -20,6 +31,10 @@ class AppModel
         return true;
     }
 
+    /**
+     * This runs a query against the database
+     * 
+     */
     protected function executeQuery($query) {
         if ($this->conection->query($query)) {
             return true;
@@ -27,6 +42,10 @@ class AppModel
         return false;        
     }
 
+    /**
+     * This retrieves the data based on a query
+     * 
+     */
     protected function getData($query) {
         $result = $this->conection->query($query);
 		if ($result) {
@@ -46,5 +65,3 @@ class AppModel
         
 	}
 }
-
-?>

@@ -3,6 +3,9 @@
 include_once __DIR__ . '/UserController.php';
 include_once __DIR__ . '../../../Model/User/UserModel.php';
 
+/**
+ * LoginController
+ */
 class LoginController extends UserController
 {
     function __construct()
@@ -12,7 +15,7 @@ class LoginController extends UserController
     }
 
     /**
-     * loginAction
+     * The data of an account is registered in session
      */
     private function loginAction()
     {
@@ -28,7 +31,10 @@ class LoginController extends UserController
                 $this->createResponseFailer(403, 'Resource not found');
             }
 
-            $this->createResponseSuccess($user);
+            $_SESSION['username'] = $user['username'];
+            $_SESSION['id'] = $user['id'];
+
+            $this->createResponseSuccess(['data' => $user]);
         } catch (Exception $e) {
             $this->createResponseFailer(409, 'Conflict');
         } catch (Throwable $e) {

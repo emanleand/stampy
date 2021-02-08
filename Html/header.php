@@ -11,9 +11,11 @@
 		<div class="container">
 			<nav class="menu">
 				<a id="link-users" href="#">Stampy</a>
-				<a id="link-login" href="#">Login</a>
+				<a id="link-username" code="" href="#"></a>
+				<a id="link-login-in" href="#">Login</a>
 				<a id="new-register" href="#">Register</a>
-				<a href="#">Logout</a>
+				<a id="link-login-out" href="#" style="display: none;">Logout</a>
+				<!-- <a id="link-login-out" href="#">Logout</a> -->
 			</nav>
 		</div>
 	</header>

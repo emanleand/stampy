@@ -4,39 +4,34 @@ include_once __DIR__ . '/UserController.php';
 include_once __DIR__ . '../../../Model/User/UserModel.php';
 
 /**
- * Class DeleteController
+ * Class GetController  
  */
-class DeleteController extends UserController
+class GetController extends UserController
 {
     function __construct()
     {
-        session_start();
-        $this->deleteUserAction();
+        $this->getUserAction();
     }
 
     /**
-     * This deletes a user account
+     * This retrieves the data for a specific user account
      */
-    private function deleteUserAction()
+    private function getUserAction()
     {
         try {
             if (empty($_GET['id']) || !isset($_GET['id'])) {
                 $this->createResponseFailer(400, 'BadRequest');
             }
-
             $id =  $_GET['id'];
-            if ($id === $_SESSION['id']) {
-                $this->createResponseFailer(400, 'Unable to delete current session client');
-            }
 
             $db = new UserModel;
-            $response = $db->removeUser($id);
+            $user = $db->find($id);
 
-            if (!$response) {
+            if (!$user) {
                 $this->createResponseFailer(403, 'Resource not found');
             }
 
-            $this->createResponseSuccess(['message' => 'success']);
+            $this->createResponseSuccess($user);
         } catch (Exception $e) {
             $this->createResponseFailer(409, 'Conflict');
         } catch (Throwable $e) {
@@ -45,4 +40,4 @@ class DeleteController extends UserController
     }
 }
 
-new DeleteController;
+new GetController;
