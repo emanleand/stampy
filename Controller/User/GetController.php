@@ -25,7 +25,8 @@ class GetController extends UserController
             $id =  $_GET['id'];
 
             $db = new UserModel;
-            $user = $db->find($id);
+            $data = $db->find($id);
+            $user = $data[0];
 
             if (!$user) {
                 $this->createResponseFailer(403, 'Resource not found');

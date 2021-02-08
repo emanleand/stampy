@@ -26,7 +26,8 @@ class LoginController extends UserController
             }
 
             $db = new UserModel;
-            $user = $db->findUser($input);
+            $data = $db->findUser($input);
+            $user = $data[0];
             if (empty($user)) {
                 $this->createResponseFailer(403, 'Resource not found');
             }

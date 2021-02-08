@@ -25,14 +25,24 @@ class RegisterController extends UserController
             $error = $this->validate($input);
 
             if (!empty($error)) {
-                $this->createResponseFailer(400, 'BadRequest');
+                $this->createResponseFailer(400, 'All fields are required');
             }
 
             if ($input['password'] !== $input['password_repeat']) {
-                $this->createResponseFailer(400, 'BadRequest');
+                $this->createResponseFailer(400, 'Different password');
             }
 
-            $db = new UserModel;
+            $db = new UserModel;            
+            $username = $db->findOne(['username' => $input['username']]);
+            if (!empty($username)) {
+                $this->createResponseFailer(400, 'Duplicate username');
+            }
+
+            $email = $db->findOne(['email' => $input['email']]);
+            if (!empty($email)) {
+                $this->createResponseFailer(400, 'Duplicate email');
+            }
+
             $db->setUser($input);
 
             $this->createResponseSuccess(['message' => 'success']);
@@ -41,6 +51,15 @@ class RegisterController extends UserController
         } catch (Throwable $e) {
             $this->createResponseFailer(409, 'Conflict');
         }
+    }
+
+    /**
+     *  
+     * 
+     */    
+    private function findUsername() 
+    {
+
     }
 }
 

@@ -23,19 +23,29 @@ class UpdateController extends UserController
             $error = $this->validate($input);
 
             if (!isset($_GET['id']) || empty($_GET['id'])) {
-                $this->createResponseFailer(400, 'BadRequest');
+                $this->createResponseFailer(400, 'Bad Request');
             }
             $id = $_GET['id'];
 
             if (!empty($error)) {
-                $this->createResponseFailer(400, 'BadRequest');
+                $this->createResponseFailer(400, 'All fields are required');
             }
 
             if ($input['password'] !== $input['password_repeat']) {
-                $this->createResponseFailer(400, 'BadRequest');
+                $this->createResponseFailer(400, 'Different password');
             }
             
             $db = new UserModel;
+            $username = $db->findOne(['username' => $input['username']], $id);
+            if (!empty($username)) {
+                $this->createResponseFailer(400, 'Duplicate username');
+            }
+
+            $email = $db->findOne(['email' => $input['email']], $id);
+            if (!empty($email)) {
+                $this->createResponseFailer(400, 'Duplicate email');
+            }
+
             $db->updateUser($input, $id);
 
             $this->createResponseSuccess(['message' => 'success']);

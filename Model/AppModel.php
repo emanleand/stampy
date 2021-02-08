@@ -56,9 +56,6 @@ class AppModel
 				}
 				$i++;
             }
-            if (count($data) === 1) {
-                return $data[0];
-            } 
             return $data;
         }
         return [];

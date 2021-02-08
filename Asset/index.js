@@ -135,18 +135,32 @@ window.onload = () => {
         viewLogin.style.display = 'none';
     }
 
-    function loadUserData(user, mode = 'insert', id = null) {
-        document.querySelector('#first-name').value = user.first_name;
-        document.querySelector('#last-name').value = user.last_name;
-        document.querySelector('#username').value = user.username;
-        document.querySelector('#email').value = user.email;
-        document.querySelector('#password').value = user.password;
-        document.querySelector('#password-repeat').value = user.password;
-        
+    /**
+     * 
+     * 
+     * @param array user 
+     * @param string| mode 
+     * @param int id 
+     */
+    function loadUserData(user = [], mode = 'insert', id = null) {        
         if (mode === 'update') {
             document.querySelector('#button-register').style.display = 'none';
             document.querySelector('#button-update').style.display = 'block';
             document.querySelector('#user').value = id;
+            document.querySelector('#first-name').value = user.first_name;
+            document.querySelector('#last-name').value = user.last_name;
+            document.querySelector('#username').value = user.username;
+            document.querySelector('#email').value = user.email;
+            document.querySelector('#password').value = user.password;
+            document.querySelector('#password-repeat').value = user.password;
+
+        } else if (mode === 'insert') {
+            document.querySelector('#first-name').value = '';
+            document.querySelector('#last-name').value = '';
+            document.querySelector('#username').value = '';
+            document.querySelector('#email').value = '';
+            document.querySelector('#password').value = '';
+            document.querySelector('#password-repeat').value = '';
         }
     }
 
@@ -222,7 +236,7 @@ window.onload = () => {
         http.setRequestHeader('Content-type', 'application/json; charset=utf-8');
         http.onload = function () {
             let response = JSON.parse(http.responseText);
-            if (http.readyState == 4 && http.status == "200") {
+            if (http.readyState == 4 && http.status == "200") {console.log(response);
                 if (response.code === 200) {
                     window.location.reload();
                     focusViewListUser();
@@ -287,6 +301,7 @@ window.onload = () => {
                 console.log(response);
                 if(response.code === 200) {
                     HeaderLoggedIn(response.data.username, response.data.id);
+                    loadUserData();
                 } else {
                     focusViewLogin();
                 }

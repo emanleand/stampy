@@ -138,4 +138,38 @@ class UserModel extends AppModel
         }
         return false;
     }
+
+    /**
+     * 
+     * This searches for a specific user account.
+     * 
+     * @param Array $user 
+     * @param int $id
+     * 
+     * @return Array
+     *  
+     */
+    public function findOne(array $user = [], $id = null)
+    {
+        if (empty($user) || count($user) > 1) {
+            return [];
+        }
+
+        $filter = "";
+        foreach ($user as $key => $value) {
+            $filter = $key . " = '{$value}'";
+        }
+
+        $filterAditional = "";
+        if ($id !== null) {
+            $filterAditional = " AND id <> {$id}";
+        }
+ 
+        $query = "SELECT * FROM user WHERE " . $filter . $filterAditional;
+
+        if ($this->getConection()) {
+            return $this->getData($query);
+        }
+        return [];
+    }
 }
