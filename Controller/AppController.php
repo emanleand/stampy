@@ -1,4 +1,11 @@
 <?php
+
+/**
+ * Class AppController 
+ * 
+ * @Description This class unifies the processes common to all controllers
+ * 
+ */
 class AppController
 {
     /**

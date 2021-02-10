@@ -52,8 +52,9 @@ section {
     background: #fff;
 	width: 500px;
 	margin: 20px auto;
-	padding: 20px;
-	border-radius: 5px;
+    padding: 20px 57px 20px 16px;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
 .title-login {
@@ -94,8 +95,9 @@ section {
     background: #fff;
 	width: 500px;
 	margin: 20px auto;
-	padding: 20px;
-	border-radius: 5px;
+	padding: 20px 57px 20px 16px;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
 .form-login input,
@@ -123,6 +125,22 @@ section {
 } 
 
 /* LIST */
+.header-table-user {  
+    width: 60%;
+	margin: 0 260px;
+	display: flex;
+	flex-direction:row;
+	flex-wrap:wrap;
+	justify-content:space-between;
+}
+
+.item {
+    text-align: center;
+    font-size: 40px;
+    color: #fff;
+    width: 50%;
+}
+
 .title-table-user {
     font-size: 20px;
     line-height: 34px;

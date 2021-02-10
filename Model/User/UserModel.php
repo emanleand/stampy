@@ -27,8 +27,8 @@ class UserModel extends AppModel
                 password
             ) 
             VALUES (
-                '{$user['first_name']}', 
-                '{$user['last_name']}',
+                '{$user['firstName']}', 
+                '{$user['lastName']}',
                 '{$user['username']}',
                 '{$user['email']}',
                 '{$user['password']}')
@@ -125,8 +125,8 @@ class UserModel extends AppModel
     {
         $query =
             "UPDATE user SET 
-                first_name = '{$user['first_name']}', 
-                last_name = '{$user['last_name']}', 
+                first_name = '{$user['firstName']}', 
+                last_name = '{$user['lastName']}', 
                 username = '{$user['username']}', 
                 email = '{$user['email']}', 
                 password = '{$user['password']}'

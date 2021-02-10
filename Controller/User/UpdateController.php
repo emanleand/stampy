@@ -10,6 +10,7 @@ class UpdateController extends UserController
 {
     function __construct()
     {
+        session_start();
         $this->updateUserAction();
     }
 
@@ -20,7 +21,7 @@ class UpdateController extends UserController
     {
         try {
             $input = json_decode(file_get_contents('php://input'), 1);
-            $error = $this->validate($input);
+            $error = $this->validateInput($input);
 
             if (!isset($_GET['id']) || empty($_GET['id'])) {
                 $this->createResponseFailer(400, 'Bad Request');
@@ -28,7 +29,7 @@ class UpdateController extends UserController
             $id = $_GET['id'];
 
             if (!empty($error)) {
-                $this->createResponseFailer(400, 'All fields are required');
+                $this->createResponseFailer(400, json_encode($error));
             }
 
             if ($input['password'] !== $input['password_repeat']) {
@@ -48,7 +49,10 @@ class UpdateController extends UserController
 
             $db->updateUser($input, $id);
 
-            $this->createResponseSuccess(['message' => 'success']);
+            $_SESSION['username'] = $input['username'];
+            $_SESSION['id'] = $input['id'];
+
+            $this->createResponseSuccess(['data' => $input]);
         } catch (Exception $e) {
             $this->createResponseFailer(409, 'Conflict');
         } catch (Throwable $e) {

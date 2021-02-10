@@ -22,17 +22,16 @@ class RegisterController extends UserController
     {
         try {
             $input = json_decode(file_get_contents('php://input'), 1);
-            $error = $this->validate($input);
-
+            $error = $this->validateInput($input);
             if (!empty($error)) {
-                $this->createResponseFailer(400, 'All fields are required');
+                $this->createResponseFailer(400, json_encode($error));
             }
 
             if ($input['password'] !== $input['password_repeat']) {
                 $this->createResponseFailer(400, 'Different password');
             }
 
-            $db = new UserModel;            
+            $db = new UserModel;
             $username = $db->findOne(['username' => $input['username']]);
             if (!empty($username)) {
                 $this->createResponseFailer(400, 'Duplicate username');
@@ -51,15 +50,6 @@ class RegisterController extends UserController
         } catch (Throwable $e) {
             $this->createResponseFailer(409, 'Conflict');
         }
-    }
-
-    /**
-     *  
-     * 
-     */    
-    private function findUsername() 
-    {
-
     }
 }
 

@@ -21,8 +21,10 @@ class LoginController extends UserController
     {
         try {
             $input = json_decode(file_get_contents('php://input'), 1);
-            if (empty($input['username']) || empty($input['password'])) {
-                $this->createResponseFailer(400, 'BadRequest');
+
+            $error = $this->validateInput($input);
+            if (!empty($error)) {
+                $this->createResponseFailer(400, json_encode($error));
             }
 
             $db = new UserModel;

@@ -3,8 +3,8 @@
     <h3 id="error-register" class="title-login"></h3>
     <input id="user" type="text" name="user" style="display: none;">
     <form id="form-register" class="form-register" method="POST">
-        <input id="first-name" type="text" name="first_name" placeholder="First Name">
-        <input id="last-name" type="text" name="last_name" placeholder="Last Name">
+        <input id="first-name" type="text" name="firstName" placeholder="First Name">
+        <input id="last-name" type="text" name="lastName" placeholder="Last Name">
         <input id="username" type="text" name="username" placeholder="Username">
         <input id="email" type="text" name="email" placeholder="Email">
         <input id="password" type="password" name="password" placeholder="Password">
