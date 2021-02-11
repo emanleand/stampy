@@ -80,15 +80,16 @@ section {
 
 .info {
     color: #fff;
-    background: #55a6b1
+    background: #2e353a
 }
 
 .alert {
     color: #fff;
     background: #de6b47
 }
-.form-login .btn:hover {
-    background: #105f46; }
+.form-login .btn:hover { 
+    background: #38444c; 
+}
 
 /* FORM REGISTER */
 .form-register {
@@ -121,12 +122,13 @@ section {
 }
 
 .form-register .btn:hover {
-    background: #105f46; 
+    background: #38444c; 
 } 
 
 /* LIST */
 .header-table-user {  
     width: 60%;
+    height: 500px;
 	margin: 0 260px;
 	display: flex;
 	flex-direction:row;
@@ -193,6 +195,33 @@ section {
     color: #009879;
 }
 
+/*---Pagination---*/
+.paginator {
+    width: 100%;
+}
+
+ul li {
+    list-style: none;
+    display: inline-block;
+    margin-right: 15px;
+}
+
+ul li a {
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 5px 10px 5px 10px;
+    display: block;
+    background: #2e353a;
+    border-radius: 20px;
+}
+
+.btn a {
+    padding: 2px;
+    background: #3d4b5c;
+    border-radius: 2px;
+    text-align: center;
+    width: 30px;
+}
 /* ----- ----- MEDIA QUERIES ----- ----- */
 @media screen and (max-width: 800px) {
     header .menu {

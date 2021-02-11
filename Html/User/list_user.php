@@ -2,7 +2,8 @@
 include_once __DIR__ . '../../../Controller/User/ListController.php';
 
 $db = new ListController;
-$users = $db->getUsers();
+$table = $db->getTableUsers();
+
 ?>
 <section id="section-table-user">
     <div class="header-table-user">
@@ -28,7 +29,7 @@ $users = $db->getUsers();
             </thead>
             <tbody>
                 <?php
-                    foreach ($users as $key => $value) { ?>                     
+                    foreach ($table['users'] as $key => $value) { ?>                     
                         <tr>
                             <th><?php echo $value['id']?></th>
                             <th><?php echo $value['first_name']?></th>
@@ -51,5 +52,22 @@ $users = $db->getUsers();
                 ?>
             </tbody>
         </table>
+        <div class="paginator">
+            <ul>
+                <li class="btn"><a href=" <?php echo '?pag=' . $table['dec']; ?> ">◀</a></li>
+                <?php            
+                    for($i = $table['from']; $i <= $table['until']; $i++) {
+                        if($i <= $table['log_amount']) {
+                            if($i == $compag) {
+                                echo "<li class=\"active\"><a href=\"?pag=" . $i . "\">" . $i . "</a></li>";
+                            } else {
+                            echo "<li><a href=\"?pag=" . $i . "\">" . $i . "</a></li>";
+                            }     		
+                        }
+                    }
+                ?>
+                <li class="btn"><a href=" <?php echo '?pag=' . $table['inc']; ?> ">▶</a></li>
+            </ul>
+        </div>
     </div>
 </section>

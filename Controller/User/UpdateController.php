@@ -35,7 +35,7 @@ class UpdateController extends UserController
             if ($input['password'] !== $input['password_repeat']) {
                 $this->createResponseFailer(400, 'Different password');
             }
-            
+
             $db = new UserModel;
             $username = $db->findOne(['username' => $input['username']], $id);
             if (!empty($username)) {
@@ -48,9 +48,6 @@ class UpdateController extends UserController
             }
 
             $db->updateUser($input, $id);
-
-            $_SESSION['username'] = $input['username'];
-            $_SESSION['id'] = $input['id'];
 
             $this->createResponseSuccess(['data' => $input]);
         } catch (Exception $e) {

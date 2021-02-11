@@ -9,7 +9,7 @@ include_once __DIR__ . '../../AppController.php';
  * 
  */
 class UserController extends AppController
-{	
+{
 	/**
 	 * Here the validation rules are defined
 	 */

@@ -58,21 +58,25 @@ class UserModel extends AppModel
      * This retrieves all accounts except the current one in session.
      * 
      */
-    public function findWithoutUsingUserCurrent()
+    public function findWithoutUsingUserCurrent($id, $left, $right)
     {
-        if (!isset($_SESSION['id']) || empty($_SESSION['id'])) {
-            return [];
-        }
-
-        $id = $_SESSION['id'];
         $query =
             "SELECT * FROM user
-            WHERE id <> '{$id}'
+            WHERE id <> {$id}
+            ORDER BY id LIMIT {$left} , {$right}
         ";
-
         if ($this->getConection()) {
             return $this->getData($query);
         }
+    }
+
+    /**
+     * @return Int | null 
+     */
+    public function getNumberOfUsers()
+    {
+        $query = "SELECT * FROM user";
+        return $this->getConection()->query($query)->num_rows;
     }
 
     /**

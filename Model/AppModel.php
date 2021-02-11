@@ -28,7 +28,7 @@ class AppModel
 		if ($this->conection->connect_errno) {
 			return false;
         }
-        return true;
+        return $this->conection;
     }
 
     /**
@@ -58,7 +58,6 @@ class AppModel
             }
             return $data;
         }
-        return [];
-        
-	}
+        return [];   
+    }
 }
