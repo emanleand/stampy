@@ -40,20 +40,6 @@ class UserModel extends AppModel
         return false;
     }
 
-    public function findUser($user = [])
-    {
-        $query =
-            "SELECT * 
-                FROM user
-                WHERE username = '{$user['username']}' AND 
-                password = '{$user['password']}'
-            ";
-
-        if ($this->getConection()) {
-            return $this->getData($query);
-        }
-    }
-
     /**
      * This retrieves all accounts except the current one in session.
      * 
@@ -82,7 +68,9 @@ class UserModel extends AppModel
     /**
      * Here a specific user account is deleted
      * 
-     * @param int $id
+     * @param Int $id
+     * 
+     * @return Bool
      * 
      */
     public function removeUser(int $id)
@@ -102,13 +90,15 @@ class UserModel extends AppModel
      * 
      * This searches for a specific user account.
      * 
-     * @param int $id
+     * @param Int $id
+     * 
+     * @return Bool
      */
     public function find(int $id = null)
     {
         $filter = ($id)? "WHERE id = {$id}": ""; 
         $query =
-            "SELECT * FROM user " . $filter
+            "SELECT id, first_name, last_name, username, email FROM user " . $filter
         ;
 
         if ($this->getConection()) {
@@ -122,7 +112,9 @@ class UserModel extends AppModel
      * Here a specific user account is updated
      * 
      * @param Array $user 
-     * @param int $id
+     * @param Int $id
+     * 
+     * @return Bool
      * 
      */
     public function updateUser(array $user, int $id)
@@ -132,8 +124,7 @@ class UserModel extends AppModel
                 first_name = '{$user['firstName']}', 
                 last_name = '{$user['lastName']}', 
                 username = '{$user['username']}', 
-                email = '{$user['email']}', 
-                password = '{$user['password']}'
+                email = '{$user['email']}'
             WHERE id = {$id}
         ";
 

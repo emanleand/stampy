@@ -16,6 +16,9 @@
 <section class="main">		
     <!-- Register User -->
     <?php require_once('Html/User/register_user.php'); ?>
+
+    <!-- Updater User -->
+    <?php require_once('Html/User/update_user.php'); ?>
     
     <!-- Login User -->
     <?php require_once('Html/User/login_user.php'); ?>

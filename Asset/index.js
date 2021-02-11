@@ -5,6 +5,7 @@ window.onload = () => {
     accessStatusRequest();
 
     let viewRegister = document.querySelector('#section-form-register');
+    let viewUpdater = document.querySelector('#section-form-updater');
 
     let viewUserList = document.querySelector('#section-table-user');
 
@@ -79,7 +80,7 @@ window.onload = () => {
             let response = JSON.parse(http.responseText);
             if (http.readyState == 4 && http.status == "200") {
                 if (response.code === 200) {
-                    focusViewRegister();
+                    focusViewUpdater();
                     loadUserData(response, 'update', response.id);
                 }
             } else {
@@ -104,7 +105,7 @@ window.onload = () => {
                 let response = JSON.parse(http.responseText);
                 if (http.readyState == 4 && http.status == "200") {
                     if (response.code === 200) {
-                        focusViewRegister();
+                        focusViewUpdater();
                         loadUserData(response, 'update', response.id);
                     }
                 } else {
@@ -121,16 +122,26 @@ window.onload = () => {
         viewLogin.style.display = 'block';
         viewUserList.style.display = 'none';
         viewRegister.style.display = 'none';
+        viewUpdater.style.display = 'none';
     }
 
     function focusViewRegister() {
         viewRegister.style.display = 'block';
         viewLogin.style.display = 'none';
         viewUserList.style.display = 'none';
+        viewUpdater.style.display = 'none';
     }
     
     function focusViewListUser() {
         viewUserList.style.display = 'block';
+        viewRegister.style.display = 'none';
+        viewLogin.style.display = 'none';
+        viewUpdater.style.display = 'none';
+    }
+
+    function focusViewUpdater() {
+        viewUpdater.style.display = 'block';
+        viewUserList.style.display = 'none';
         viewRegister.style.display = 'none';
         viewLogin.style.display = 'none';
     }
@@ -142,27 +153,13 @@ window.onload = () => {
      * @param string| mode 
      * @param int id 
      */
-    function loadUserData(user = [], mode = 'insert', id = null) {        
-        if (mode === 'update') {
-            document.querySelector('#button-register').style.display = 'none';
-            document.querySelector('#button-update').style.display = 'block';
-            document.querySelector('#user').value = id;
-            document.querySelector('#first-name').value = user.first_name;
-            document.querySelector('#last-name').value = user.last_name;
-            document.querySelector('#username').value = user.username;
-            document.querySelector('#email').value = user.email;
-            document.querySelector('#password').value = user.password;
-            document.querySelector('#password-repeat').value = user.password;
-
-        } else if (mode === 'insert') {
-            document.querySelector('#first-name').value = '';
-            document.querySelector('#last-name').value = '';
-            document.querySelector('#username').value = '';
-            document.querySelector('#email').value = '';
-            document.querySelector('#password').value = '';
-            document.querySelector('#password-repeat').value = '';
-        }
-    }
+    function loadUserData(user = [], mode = 'insert', id = null) {
+        document.querySelector('#user').value = id;
+        document.querySelector('#first-name-upd').value = user.first_name;
+        document.querySelector('#last-name-upd').value = user.last_name;
+        document.querySelector('#username-upd').value = user.username;
+        document.querySelector('#email-upd').value = user.email;
+}
 
     function HeaderNoLoggedIn() {
         document.querySelector('#link-login-in').style.display = 'inline-block';
@@ -251,14 +248,14 @@ window.onload = () => {
     }
  
     /**
-     * 
+     * AJAX to UpdateController
      */
     function userUpdateRequest() {
         let id = document.querySelector('#user').value;
-        let errorLogin = document.querySelector('#error-register');
+        let errorLogin = document.querySelector('#error-update');
         errorLogin.innerHTML = '';
         
-        let formData = document.querySelector('#form-register');
+        let formData = document.querySelector('#form-update');
         let data = new FormData(formData);
         let dataObj = serialize(data);
         let dataString = JSON.stringify(dataObj);
@@ -272,7 +269,6 @@ window.onload = () => {
         http.onload = function () {
             let response = JSON.parse(http.responseText);
             if (http.readyState == 4 && http.status == "200") {
-                console.log(response);
                 if (response.code === 200) {
                     window.location.reload();
                     focusViewListUser();

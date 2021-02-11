@@ -28,11 +28,15 @@ class LoginController extends UserController
             }
 
             $db = new UserModel;
-            $data = $db->findUser($input);
+            $data = $db->findOne(['username' => $input['username']]);
             $user = $data[0];
             if (empty($user)) {
-                $this->createResponseFailer(403, 'Resource not found');
+                $this->createResponseFailer(403, 'Username not found');
             }
+
+            if (!$this->verificateHash($input['password'], $user['password'])) {
+                $this->createResponseFailer(400, 'Password incorrect');
+            };
 
             $_SESSION['username'] = $user['username'];
             $_SESSION['id'] = $user['id'];

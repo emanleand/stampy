@@ -17,7 +17,7 @@ CREATE TABLE user(
     last_name varchar(50) not null,
     username varchar(50) not null,
     email varchar(50) not null,
-    password varchar(50) not null,
+    password varchar(100) not null,
 	create_at datetime DEFAULT CURRENT_TIMESTAMP,	
 CONSTRAINT pk_task PRIMARY KEY(id)
 )ENGINE =innoDb;

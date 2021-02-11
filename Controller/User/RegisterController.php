@@ -42,6 +42,10 @@ class RegisterController extends UserController
                 $this->createResponseFailer(400, 'Duplicate email');
             }
 
+            
+            $hash = password_hash($input['password'], PASSWORD_DEFAULT, [15]);
+            $input['password'] = $hash;
+
             $db->setUser($input);
 
             $this->createResponseSuccess(['message' => 'success']);

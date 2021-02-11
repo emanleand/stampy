@@ -75,12 +75,13 @@ section {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+    font-weight: bold;
     cursor: pointer;
 }
 
 .info {
     color: #fff;
-    background: #2e353a
+    background: #2d5d80
 }
 
 .alert {
@@ -88,11 +89,11 @@ section {
     background: #de6b47
 }
 .form-login .btn:hover { 
-    background: #38444c; 
+    background: #2f668e; 
 }
 
 /* FORM REGISTER */
-.form-register {
+.form-input {
     background: #fff;
 	width: 500px;
 	margin: 20px auto;
@@ -102,7 +103,7 @@ section {
 }
 
 .form-login input,
-.form-register input {
+.form-input input {
     display: block;
     width: 100%;
 	padding: 20px;
@@ -113,7 +114,7 @@ section {
 	font-family: Arial;
 }
 
-.title-register {
+.title {
     font-size: 20px;
     line-height: 34px;
     font-weight: 300;
@@ -121,15 +122,15 @@ section {
     text-align: center; 
 }
 
-.form-register .btn:hover {
-    background: #38444c; 
+.form-input .btn:hover {
+    background: #2f668e; 
 } 
 
 /* LIST */
 .header-table-user {  
     width: 60%;
     height: 500px;
-	margin: 0 260px;
+	margin: 20px auto;
 	display: flex;
 	flex-direction:row;
 	flex-wrap:wrap;

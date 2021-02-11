@@ -32,10 +32,6 @@ class UpdateController extends UserController
                 $this->createResponseFailer(400, json_encode($error));
             }
 
-            if ($input['password'] !== $input['password_repeat']) {
-                $this->createResponseFailer(400, 'Different password');
-            }
-
             $db = new UserModel;
             $username = $db->findOne(['username' => $input['username']], $id);
             if (!empty($username)) {

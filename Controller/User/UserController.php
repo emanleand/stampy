@@ -133,4 +133,27 @@ class UserController extends AppController
 			return false;
 		}
 	}
+
+	/**
+	 * This encrypts the password
+	 * 
+	 * @param String $password
+	 * 
+	 * @return String
+	 */
+	protected function generateHash(String $password) {
+		return password_hash($password, PASSWORD_DEFAULT, [15]);
+	}
+
+	/**
+	 * This verifies the password
+	 * 
+	 * @param String $password
+	 * @param String $hash
+	 * 
+	 * @return bool
+	 */
+	protected function verificateHash(String $password, String $hash) {
+		return password_verify($password, $hash);
+	}
 }

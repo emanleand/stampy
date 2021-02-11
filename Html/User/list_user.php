@@ -12,7 +12,7 @@ $table = $db->getTableUsers();
         </div>
         <div class="item">
             <a href="#" id="new-user" class="btn info small">
-                <i class="fas fa-user-plus"></i>
+                insert
             </a>
         </div>
     
@@ -38,12 +38,12 @@ $table = $db->getTableUsers();
                             <th><?php echo $value['email']?></th>
                             <th>
                                 <a id="<?php echo $value['id']?>" class="edit-user btn info small">
-                                    <i class="fas fa-marker"></i>
+                                    update
                                 </a>
                             </th>
                             <th>
                                 <a id="<?php echo $value['id']?>" class="delete-user btn alert small" onclick="deleteUser(<?php echo $value['id']?>)">
-                                    <i class="far fa-trash-alt"></i>
+                                    delete
                                 </a>
                             </th>
                         </tr>
