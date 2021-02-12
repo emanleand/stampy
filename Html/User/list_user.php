@@ -7,13 +7,23 @@ $table = $db->getTableUsers();
 ?>
 <section id="section-table-user">
     <div class="header-table-user">
-        <div class="item">
-            <h3 class="title-table-user">Crud User</h3>
+        <div>
+            <div class="item">
+                <h3 class="title-table-user">Crud User</h3>
+            </div>
+            <div class="item">
+                <a href="#" id="new-user" class="btn info small">
+                    insert
+                </a>
+            </div>
         </div>
-        <div class="item">
-            <a href="#" id="new-user" class="btn info small">
-                insert
-            </a>
+        <div>
+            <form action="">
+                <div class="">
+                    <input type="text" name="to-search" id="to-search" placeholder="filter">
+                    <input type="submit" name="filter" id="filter" value="filter">
+                </div>
+            </form>
         </div>
     
         <table id="table-user" class="table-user" cellspacing="0">
