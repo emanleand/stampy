@@ -3,27 +3,33 @@ include_once __DIR__ . '../../../Controller/User/ListController.php';
 
 $db = new ListController;
 $table = $db->getTableUsers();
-
 ?>
 <section id="section-table-user">
     <div class="header-table-user">
-        <div>
-            <div class="item">
+        <div class="form-filter-action">
+            <div class="form-filter-title item">
                 <h3 class="title-table-user">Crud User</h3>
             </div>
-            <div class="item">
+            
+            <div class="form-filter-filter">
+                <form id="form-filter" class="form-filter item">
+                    <select id="key-to-search" name="key-to-search">
+                        <option value="first_name">First Name</option>
+                        <option value="last_name">Last Name</option>
+                        <option value="email">Email</option>
+                        <option value="username">Username</option>
+                        <option value="" selected>All</option>
+                    </select>
+                    <input type="text" name="value-to-search" id="value-to-search" placeholder="filter">
+                    <button id="filter" class="btn info small">filter</button> 
+                </form>
+            </div>
+
+            <div class="form-filter-insert item">
                 <a href="#" id="new-user" class="btn info small">
                     insert
                 </a>
             </div>
-        </div>
-        <div>
-            <form action="">
-                <div class="">
-                    <input type="text" name="to-search" id="to-search" placeholder="filter">
-                    <input type="submit" name="filter" id="filter" value="filter">
-                </div>
-            </form>
         </div>
     
         <table id="table-user" class="table-user" cellspacing="0">
@@ -57,9 +63,7 @@ $table = $db->getTableUsers();
                                 </a>
                             </th>
                         </tr>
-                <?php 
-                }
-                ?>
+                <?php } ?>
             </tbody>
         </table>
         <div class="paginator">

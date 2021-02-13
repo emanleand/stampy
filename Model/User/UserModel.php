@@ -44,11 +44,22 @@ class UserModel extends AppModel
      * This retrieves all accounts except the current one in session.
      * 
      */
-    public function findWithoutUsingUserCurrent($id, $left, $right)
-    {
+    public function findWithoutUsingUserCurrent(
+        Int $id,
+        Int $left,
+        Int $right,
+        String $keyInputUser = null,
+        String $valueInputUser = null
+    ) {
+        $filter = "";
+        if ($keyInputUser && $valueInputUser) {
+            $filter = ' AND ' . $keyInputUser . " LIKE '%{$valueInputUser}%'";
+        }
+
         $query =
             "SELECT * FROM user
             WHERE id <> {$id}
+            $filter 
             ORDER BY id LIMIT {$left} , {$right}
         ";
         if ($this->getConection()) {
@@ -59,9 +70,14 @@ class UserModel extends AppModel
     /**
      * @return Int | null 
      */
-    public function getNumberOfUsers()
+    public function getNumberOfUsers($keyInputUser = null, $valueInputUser = null)
     {
-        $query = "SELECT * FROM user";
+        $filter = "";
+        if ($keyInputUser && $valueInputUser) {
+            $filter = "WHERE " . $keyInputUser . " LIKE '%{$valueInputUser}%'";
+        }
+
+        $query = "SELECT * FROM user " . $filter;
         return $this->getConection()->query($query)->num_rows;
     }
 
@@ -96,10 +112,9 @@ class UserModel extends AppModel
      */
     public function find(int $id = null)
     {
-        $filter = ($id)? "WHERE id = {$id}": ""; 
+        $filter = ($id) ? "WHERE id = {$id}" : "";
         $query =
-            "SELECT id, first_name, last_name, username, email FROM user " . $filter
-        ;
+            "SELECT id, first_name, last_name, username, email FROM user " . $filter;
 
         if ($this->getConection()) {
             return $this->getData($query);
@@ -159,7 +174,7 @@ class UserModel extends AppModel
         if ($id !== null) {
             $filterAditional = " AND id <> {$id}";
         }
- 
+
         $query = "SELECT * FROM user WHERE " . $filter . $filterAditional;
 
         if ($this->getConection()) {

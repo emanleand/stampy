@@ -71,26 +71,11 @@ window.onload = () => {
         e.preventDefault();
         signOffRequest();
     });
-
     buttonFilter.addEventListener('click', (e) => {
-        // e.preventDefault();
-        // let value = document.querySelector('#to-search').value;
-        // console.log('--> ', value);
-        // const viewFilter = URL + '/User/GetController.php?value=' + value;
-    
-        // let http = new XMLHttpRequest();
-        // http.open('GET', viewFilter, true);
-        // http.onload = function () {
-        //     let response = JSON.parse(http.responseText);
-        //     if (http.readyState == 4 && http.status == "200") {
-        //         // if (response.code === 200) {
-
-        //         // }
-        //     } else {
-        //         // return html empty
-        //     }
-        // }
-        // http.send(null);
+        e.preventDefault();
+        let value = document.querySelector('#value-to-search').value;
+        let key = document.querySelector('#key-to-search').value;
+        location.href = '?key=' + key + '&value=' + value;
     });
 
     buttonUpdateUserCurrent.addEventListener('click', (e) => {

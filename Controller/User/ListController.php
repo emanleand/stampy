@@ -27,11 +27,14 @@ class ListController extends UserController
         }
         $id = $_SESSION['id'];
 
-        $compag = (int)(!isset($_GET['pag'])) ? 1 : $_GET['pag'];
+        $keyFilter = $_GET['key'];
+        $valueFilter = $_GET['value'];
 
         $db = new UserModel;
-        $recordsNumber = $db->getNumberOfUsers();
-        $totalRecordsNumber = ceil($recordsNumber / PAGE);
+        $recordsNumber = $db->getNumberOfUsers($keyFilter, $valueFilter);
+
+        $totalRecordsNumber = ceil(($recordsNumber - 1) / PAGE);
+        $compag = (int)(!isset($_GET['pag'])) ? 1 : $_GET['pag'];
         $left = ($compag - 1) * PAGE;
         $right =  PAGE;
 
@@ -44,7 +47,7 @@ class ListController extends UserController
         $from = ($from < 1) ? 1 : $from;
         $until = ($until < PAGE) ? PAGE : $until;
 
-        $users = $db->findWithoutUsingUserCurrent($id, $left, $right);
+        $users = $db->findWithoutUsingUserCurrent($id, $left, $right, $keyFilter, $valueFilter);
         return [
             'users' => $users,
             'inc' => $increasePagination,
