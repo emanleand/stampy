@@ -7,3 +7,14 @@
         <button class="btn info" id="login" name="login" value="login">login</button>
     </form>
 </section>
+
+<script type="text/javascript">
+
+    document.querySelector('#section-form-login').addEventListener('load', () => {
+        
+        document.querySelector('#login').addEventListener((e) => {
+            e.preventDefault();
+            console.log('object');
+        });
+    });
+</script>
