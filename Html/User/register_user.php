@@ -1,8 +1,7 @@
 <section id="section-form-register">
     <h3 class="title">Register</h3>
-    <h3 id="error-register" class="title-login"></h3>
     <input id="user" type="text" name="user" style="display: none;">
-    <form id="form-register" class="form-input" method="POST">
+    <form id="form-register" class="form-input">
         <input id="first-name" type="text" name="firstName" placeholder="First Name">
         <input id="last-name" type="text" name="lastName" placeholder="Last Name">
         <input id="username" type="text" name="username" placeholder="Username">

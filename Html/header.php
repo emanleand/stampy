@@ -18,3 +18,4 @@
 			</nav>
 		</div>
 	</header>
+	<div id="error" class="error"></div>

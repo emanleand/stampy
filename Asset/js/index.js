@@ -24,20 +24,24 @@ window.onload = () => {
 
     /* *** Click View *** */
     linkNewRegister.addEventListener('click', (e) => {
+        removeAlert();
         focusViewRegister();
     });
 
     linkLoginIn.addEventListener('click', (e) => {
+        removeAlert();
         focusViewLogin();
     });
 
     linkUsers.addEventListener('click', (e) => {
         accessStatusRequest();
+        removeAlert();
         focusViewListUser();
     });
 
     addNewRegister.addEventListener('click', (e) => {
         accessStatusRequest();
+        removeAlert();
         focusViewRegister();
     });
 
@@ -71,6 +75,7 @@ window.onload = () => {
 
     buttonUpdateUserInSessionAction.addEventListener('click', (e) => {
         e.preventDefault();
+        removeAlert();
         sessionUserUpdateRequest();
     });
 
@@ -178,15 +183,31 @@ window.onload = () => {
         document.querySelector('#new-register').style.display = 'none';
         document.querySelector('#link-username').innerHTML = username;
         document.querySelector('#link-username').setAttribute('code', id);
-    } 
+    }
 
+    /**
+     * @param string msg
+     */
+    function showAlert(msg) {console.log('object');
+        let error = document.querySelector('#error');
+        error.innerHTML = msg;
+        error.style.backgroundColor = '#eca58f';
+        error.style.opacity = '0.85';
+    }
+
+    /**
+     * 
+     */
+    function removeAlert() {
+        let error = document.querySelector('#error');
+        error.innerHTML = '';
+        error.style.backgroundColor = '';
+        error.style.opacity
+    }
     /**
      * This requests access for a new user.
      */
     function loginRequest() {
-        let errorLogin = document.querySelector('#error-login');
-        errorLogin.innerHTML = '';
-
         let formData = document.querySelector('#form-login');
         let data = new FormData(formData);
         let dataObj = serialize(data);
@@ -205,10 +226,10 @@ window.onload = () => {
                     focusViewListUser();
                     HeaderLoggedIn(response.data.username, response.data.id);
                 } else {
-                    errorLogin.innerHTML = response.message;
+                    showAlert(response.message);
                 }
             } else {
-                errorLogin.innerHTML = response.message;
+                showAlert('Bad Request');
             }
         }
         http.send(dataString);
@@ -218,9 +239,6 @@ window.onload = () => {
      * This requests the registration of a new user
      */
     function userNewRequest() {
-        let errorLogin = document.querySelector('#error-register');
-        errorLogin.innerHTML = '';
-
         let formData = document.querySelector('#form-register');
         let data = new FormData(formData);
         let dataObj = serialize(data);
@@ -238,10 +256,10 @@ window.onload = () => {
                     window.location.reload();
                     focusViewListUser();
                 } else {
-                    errorLogin.innerHTML = response.message;
+                    showAlert(response.message);
                 }
             } else {
-                errorLogin.innerHTML = response.message;
+                showAlert('Bad Request');
             }
         }
         http.send(dataString);
@@ -252,8 +270,6 @@ window.onload = () => {
      */
     function userUpdateRequest() {
         let id = document.querySelector('#user').value;
-        let errorLogin = document.querySelector('#error-update');
-        errorLogin.innerHTML = '';
         
         let formData = document.querySelector('#form-update');
         let data = new FormData(formData);
@@ -272,10 +288,10 @@ window.onload = () => {
                     window.location.reload();
                     focusViewListUser();
                 } else {
-                    errorLogin.innerHTML = response.message;
+                    showAlert(response.message);
                 }
             } else {
-                errorLogin.innerHTML = response.message;
+                showAlert('Bad Request');
             }
         }
         http.send(dataString);

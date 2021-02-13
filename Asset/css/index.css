@@ -1,4 +1,4 @@
-/* ----- ----- HEADER ----- ----- */
+/*HEADER*/
 body {
     background: #fff;
     font-family: "Open Sans";
@@ -19,7 +19,7 @@ header {
 }
 
 header .menu {
-    margin: 40px 0;
+    margin: 20px 0;
     text-align: right; 
 }
 
@@ -37,7 +37,7 @@ header .menu a:hover {
     border-bottom: 2px solid #fff; 
 }
 
-/*Button*/
+/*Common to several elements*/
 .small {
 	font-size: 14px;
 	padding: 5px 10px;
@@ -46,23 +46,6 @@ header .menu a:hover {
 section {
     margin-top: 50px;
     margin: 0 auto;
-}
-
-.form-login {
-    background: #fff;
-	width: 500px;
-	margin: 20px auto;
-    padding: 20px 57px 20px 16px;
-    border-radius: 5px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-}
-
-.title-login {
-    font-size: 20px;
-    line-height: 34px;
-    font-weight: 300;
-    color: #121f2b;
-    text-align: center; 
 }
 
 .btn {
@@ -88,6 +71,38 @@ section {
     color: #fff;
     background: #de6b47
 }
+
+.title {
+    font-size: 20px;
+    line-height: 34px;
+    font-weight: 300;
+    color: #121f2b;
+    text-align: center; 
+}
+
+.error {
+    font-size: 20px;
+    line-height: 34px;
+    font-weight: 300;
+    color: #121f2b;
+    height: 30px;
+    width: 30%;
+    padding: 5px 0;
+    text-align: center;
+    width: 45%;
+    margin: 0 auto;
+}
+
+/*Form Login*/
+.form-login {
+    background: #fff;
+	width: 500px;
+	margin: 20px auto;
+    padding: 20px 57px 20px 16px;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
 .form-login .btn:hover { 
     background: #2f668e; 
 }
@@ -114,14 +129,6 @@ section {
 	font-family: Arial;
 }
 
-.title {
-    font-size: 20px;
-    line-height: 34px;
-    font-weight: 300;
-    color: #121f2b;
-    text-align: center; 
-}
-
 .form-input .btn:hover {
     background: #2f668e; 
 } 
@@ -134,22 +141,6 @@ section {
 	display: flex;
 	flex-direction:row;
 	flex-wrap:wrap;
-	justify-content:space-between;
-}
-
-.item {
-    text-align: center;
-    font-size: 40px;
-    color: #fff;
-    width: 50%;
-}
-
-.title-table-user {
-    font-size: 20px;
-    line-height: 34px;
-    font-weight: 300;
-    color: #121f2b;
-    text-align: center; 
 }
 
 .table-user {
@@ -235,7 +226,6 @@ ul li a {
 }
 .form-filter-title {
     width: 20%;
-    margin-top: 20px;
 }
 .form-filter-filter {
     width: 50%;

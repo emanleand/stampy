@@ -7,12 +7,12 @@ $table = $db->getTableUsers();
 <section id="section-table-user">
     <div class="header-table-user">
         <div class="form-filter-action">
-            <div class="form-filter-title item">
-                <h3 class="title-table-user">Crud User</h3>
+            <div class="form-filter-title">
+                <h3 class="title">Crud User</h3>
             </div>
             
             <div class="form-filter-filter">
-                <form id="form-filter" class="form-filter item">
+                <form id="form-filter" class="form-filter">
                     <select id="key-to-search" name="key-to-search">
                         <option value="first_name">First Name</option>
                         <option value="last_name">Last Name</option>
@@ -25,7 +25,7 @@ $table = $db->getTableUsers();
                 </form>
             </div>
 
-            <div class="form-filter-insert item">
+            <div class="form-filter-insert">
                 <a href="#" id="new-user" class="btn info small">
                     insert
                 </a>
