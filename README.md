@@ -1,13 +1,4 @@
 # stampy
-## Description
-```java
-con un formulario de login, que permitiera el login del usuario y una
-vez logueado se mostrara un pequeño crud donde se listaran los usuarios
-que hay en el sistema y cualquier usuario logueado pudiera añadir
-usuarios, y modificar o eliminar los usuarios ya existentes. Para esta
-prueba usaríamos simplemente PHP, JS y CSS, sin otros frameworks o 
-librerías del lenguaje.
-
 ## Instalation
 ### Create Database
 
