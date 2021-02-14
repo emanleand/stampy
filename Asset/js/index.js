@@ -188,7 +188,7 @@ window.onload = () => {
     /**
      * @param string msg
      */
-    function showAlert(msg) {console.log('object');
+    function showAlert(msg) {
         let error = document.querySelector('#error');
         error.innerHTML = msg;
         error.style.backgroundColor = '#eca58f';
@@ -401,9 +401,3 @@ function serialize(data) {
     }
     return obj;
 }
-
-// https://desarrolloactivo.com/blog/javascript-peticiones-ajax-es6/
-// https://gist.github.com/EtienneR/2f3ab345df502bd3d13e
-
-// para serializar
-// https://gomakethings.com/how-to-serialize-form-data-with-vanilla-js/

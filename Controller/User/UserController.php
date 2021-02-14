@@ -18,7 +18,7 @@ class UserController extends AppController
 		'lastName' => ['alpha+', 'not_null'],
 		'email' => ['email', 'not_null'],
 		'username' => ['alpha-num', 'not_null'],
-		'password' => ['alpha-num', 'not_null'],
+		'password' => ['string', 'not_null'],
 	];
 
 	/**
